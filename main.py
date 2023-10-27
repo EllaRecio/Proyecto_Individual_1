@@ -100,6 +100,8 @@ def userdata(user_id: str):
 def obtener_informacion_por_genero(genero: str):
     # Cargar la base de datos
     df = pd.read_parquet('data/df_endpoint4.parquet')
+    if genero not in df['genres'].tolist():
+        return {"Respuesta": "No se encontraron resultados para la búsqueda realizada"}
 
     # Filtrar el DataFrame para el género especificado
     df_genero = df[df['genres'] == genero]
