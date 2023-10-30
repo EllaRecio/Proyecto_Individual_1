@@ -29,13 +29,14 @@ def developer(desarrollador: str):
     anio_free = cantidad_free.index.tolist()
 
     porc_cont_free = {}
+
     for i in range(len(anio)):
         if anio[i] not in anio_free:
-            porc_cont_free[anio[i]] = {'Cantidad de Items': cantidad_juegos[i], 'Contenido Free': "0%"}
+            porc_cont_free[anio[i]] = [cantidad_juegos[i],"0%"]
         else:
             for j in range(len(anio_free)):
                 if anio_free[j]==anio[i]:
-                    porc_cont_free[anio[i]] = {'Cantidad de Items': cantidad_juegos[i], 'Contenido Free': f'{round(cantidad_juegos_free[j]/cantidad_juegos[i]*100,2)}%'}
+                    porc_cont_free[anio[i]] = [cantidad_juegos[i], f'{round(cantidad_juegos_free[j]/cantidad_juegos[i]*100,2)}%']
     
     return {f'Respuesta para {desarrollador}': porc_cont_free}
 
